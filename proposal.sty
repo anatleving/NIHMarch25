@@ -1,0 +1,134 @@
+% !TEX root = main.tex
+
+\definecolor{lightgray}{gray}{0.9}
+\definecolor{lightgreen}{rgb}{0.9,1,0.9}
+\definecolor{lightblue}{rgb}{0.9,0.9,1}
+\definecolor{lightorange}{rgb}{1,0.9,0.9}
+\definecolor{cb_blue}{rgb}{0.22,0.49,0.72}
+\newcommand\note[1]{\hl{-- #1 --}}
+\newcommand\fastrm[1]{#1} 
+\newcommand\fastrmm[1]{\fastrm{#1}} 
+%\renewcommand\fastrm[1]{}%quick add or remove 
+
+\newcommand\struct[1]{\fastrm{\sethlcolor{lightgray} \noindent\hl{[#1]}}} %structural comments
+% notes and comments
+%\newcommand{\igkiou}[1]{}
+%\newcommand{\anat}[1]{}
+%\newcommand{\igkiou}[1]{{\textcolor{red}{[\emph{IG}: #1]}}}
+%\newcommand{\anat}[1]{{\textcolor{blue}{[\emph{AL}: #1]}}}
+
+\newcommand\emphbf[1]{\textbf{\emph{#1}}}
+
+%\newcommand{\name}{tunable convolutional imager\xspace}
+%\newcommand{\name}{\rob{analog vision processor\xspace}}
+\newcommand{\dsp}{data processing\xspace}
+\newcommand{\readout}{analog readout\xspace}
+
+
+\newcommand\Snospace[1]{} % assert(undef(\Snospace))
+\def\Snospace~{\S{}}
+\newcommand\sectionprefix{\Snospace} % use this style: §1.2.3
+% \renewcommand\sectionprefix{Section} % use this style: Section 1.2.3
+\def\sectionautorefname{\sectionprefix}
+\def\subsectionautorefname{\sectionprefix} 
+\def\subsubsectionautorefname{\sectionprefix}
+\def\tabularautorefname{Figure}
+
+\newcommand\sep{\vspace{0.1in}\hrule\vspace{0.1in}} % convenient in-column vertical separation
+
+\newcommand\codelet{codelet\xspace}
+\newcommand\Codelet{Codelet\xspace}
+\newcommand\codelets{\codelet{}s\xspace}
+\newcommand\Codelets{\Codelet{}s\xspace}
+
+%\newcommand{\boldstart}[1]{\vspace{0in}\noindent{\bf #1}}
+%\newcommand{\itstart}[1]{\vspace{0in}\noindent{\it #1}}
+
+\newcommand{\boldstart}[1]{\vspace{0.01in}\noindent{\bf #1}}
+\newcommand{\itstart}[1]{\vspace{0.01in}\noindent{\it #1}}
+
+\usepackage{graphicx,pifont}% http://ctan.org/pkg/{graphicx,pifont}
+\let\oldding\ding% Store old \ding in \oldding
+\renewcommand{\ding}[2][1]{\scalebox{#1}{\oldding{#2}}}% Scale \oldding via optional argument
+%%%%%%%%%%%%%%% footnote %%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%% Notation %%%%%%%%%%%%%
+%%% Math notation definitions
+\newcommand{\bom}{\boldsymbol{\omega}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\bpsi}{\boldsymbol{\psi}}
+\newcommand{\pf}{\boldsymbol{p}}
+\newcommand{\pfs}{p}
+\newcommand{\polar}{\theta}
+\newcommand{\ppath}{\bar{\boldsymbol{p}}}
+\newcommand{\Ppath}{\bar{\boldsymbol{P}}}
+\newcommand{\Sense}{\mathcal{S}}
+\newcommand{\ltop}{\mathcal{T}}
+\newcommand{\ltm}{\boldsymbol{T}}
+\newcommand{\probem}{\boldsymbol{M}}
+\newcommand{\ltmdim}{N^{8} \times N^{8}}
+\newcommand{\tp}{t}
+\usepackage{bm}
+
+\DeclareMathOperator{\Initialize}{Initialize}
+\DeclareMathOperator{\ComputeGradient}{ComputeGradient}
+\newcommand{\sampling}{W}
+\newcommand{\importance}{\sampling_o}
+\newcommand{\emittance}{\sampling_i}
+\newcommand{\pathsampling}{\sampling_\tau}
+\newcommand{\opl}{{\cal{T}}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\beps}{\bm{\eps}}
+\newcommand{\pathvar}{\bar{\bm{x}}}
+\newcommand{\bn}{\bm{\hat{n}}}
+\newcommand{\bg}{\bm{g}}
+\newcommand{\bs}{\bm{\sigma}}
+\newcommand{\bpi}{\bm{\pi}}
+\newcommand{\meas}{\mathcal{S}}
+\newcommand{\laplace}{\mathcal{L}}
+\newcommand{\medium}{\mathcal{M}}
+\newcommand{\boundary}{{\partial\medium}}
+%\newcommand{\Path}{\mathbb{P}}
+\newcommand{\uds}[1]{\ud \mu\paren{#1}}
+%\newcommand{\bzero}{\bm{0}}
+\newcommand{\bd}{\bm{\delta}}
+\def\eop{$\square$}
+\newcommand{\lap}[1]{\tilde{#1}}
+\newcommand{\lapl}{\lap{L}}
+\newcommand{\laps}{\lap{\sigma}}
+\newcommand{\Step}{\mathbb{T}}
+\newcommand{\pathdelta}{\Delta}
+\newcommand{\rightarrowh}{\xrightarrow{h}}
+\newcommand{\pathset}{B}
+\newcommand{\setnoevent}{B}
+\newcommand{\setevent}{C}
+\newcommand{\ext}{\sigma_t}
+\newcommand{\albedo}{\alpha}
+%\newcommand{\phase}{f_p}
+\newcommand{\bu}{\boldsymbol{u}}
+\newcommand{\bw}{\boldsymbol{w}}
+\newcommand{\opS}{\mathcal{S}}
+\newcommand{\glthrough}{f}
+\newcommand{\glscore}{S}
+\newcommand{\through}{{f_s}}
+\newcommand{\score}{{S_s}}
+\newcommand{\opR}{\mathcal{R}}
+\newcommand{\opN}{\mathcal{N}}
+\newcommand{\opE}{\mathcal{E}}
+\newcommand{\opD}{\mathcal{D}}
+\newcommand{\opT}{\mathcal{T}}
+
+
+% -------------------Proposal specific TERMS -------------------
+\newcommand{\projecttitle}{Project Title Here}
+\newcommand{\authors}{PI list here}
+
+%% Latin and special characters
+\newcommand{\etal}{et al.}
+\newcommand{\naive}{na{\"\i}ve}
+\newcommand{\Naive}{Na{\"\i}ve}
+\newcommand{\naively}{na{\"\i}vely}
+\newcommand{\apriori}{{\em a priori}}

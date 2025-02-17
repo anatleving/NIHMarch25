@@ -1,0 +1,128 @@
+\iftrue
+	\documentclass[11pt]{article}
+	\usepackage[letterpaper,margin=1in,headsep=0.15in,includehead]{geometry}
+	\usepackage[activate={true,nocompatibility},final,tracking=false,kerning=true,factor=1100,stretch=10,shrink=10]{microtype}
+	\usepackage{mathpazo,eulervm}
+	\usepackage{anyfontsize}
+
+	
+	%\usepackage{fancyhdr}
+	%\pagestyle{fancy}
+	%\renewcommand{\sectionmark}[1]{\markboth{\S\thesection\ \ \MakeUppercase{#1}}{}}
+	%\fancyhead{}
+	%\fancyhead[L]{\leftmark}
+	%\fancyhead[R]{\thepage}
+	%\fancyfoot{}
+	
+	\usepackage[compact]{titlesec}
+	%\titlespacing{\section}{0pt}{*0}{*0}
+	%\titlespacing{\subsection}{0pt}{*0}{*0}
+	%\titlespacing{\subsubsection}{0pt}{*0}{*0}
+	%\titlespacing{\paragraph}{0pt}{*0}{10pt}
+	
+	\newcommand\titleLarge{\@setfontsize\titleLarge{19}{19}}
+
+	\setlength{\floatsep}{5pt}
+	\setlength{\textfloatsep}{5pt}
+	\setlength{\abovecaptionskip}{5pt}
+	\setlength{\belowcaptionskip}{5pt}
+	\setlength{\abovedisplayskip}{2pt} 
+	\setlength{\belowdisplayskip}{2pt}
+	
+	\usepackage{enumitem}
+	\setlist[itemize]{parsep=0pt,partopsep=0pt,leftmargin=*}
+	\setlist[enumerate]{parsep=0pt,partopsep=0pt,leftmargin=*}	
+	
+	\usepackage{tikz}
+	\usepackage[font=small,labelfont=bf]{caption}
+	\usetikzlibrary{calc}
+	\DeclareCaptionFormat{overlay}{\gdef\capoverlay{#1#2#3\par}}
+	\DeclareCaptionStyle{overlay}{format=overlay}
+\else
+	\documentclass[11pt]{article}
+	%\def\baselinestretch{0.885662} % Exactly 6 lines per inch
+	\def\baselinestretch{0.96}
+	\usepackage[squeeze=0.0]{nsfLargedefaults}
+	
+	% Caption formatting
+	\makeatletter
+	\long\def\@makecaption#1#2{%
+		\vskip\@myskip
+		\sbox\@tempboxa{\small\textit{\textbf{#1:} #2}}%
+		\ifdim \wd\@tempboxa >\hsize
+		{\small\textit{\textbf{#1:} #2}\par}
+		\else
+		\global \@minipagefalse
+		\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+		\fi}
+	\makeatother
+\fi
+
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage{wrapfig}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{wrapfig,comment}
+\usepackage{mathdefs}
+\usepackage{proposal}
+\usepackage{cite}
+\usepackage[font=footnotesize]{subfig}
+\usepackage[bookmarks=false,colorlinks,citecolor=blue,urlcolor=blue]{
+hyperref}
+\usepackage{multirow}
+%\usepackage{inverse}
+\usepackage{my_macros}
+\graphicspath{{figures/}}
+
+\flushbottom
+
+\begin{document}
+%\thispagestyle{empty}
+\clearpage
+\pagestyle{empty}
+\input{narrative}
+\clearpage
+\input{summary}
+\clearpage
+\input{aims}
+
+%
+\clearpage
+%\setcounter{page}{1}
+%
+\input{significance}
+\input{innovation}
+\input{approach}
+%\input{related}
+%\input{problem_formulation}
+%\input{wavelengthscattering}
+%\input{optimization}
+%\input{missingcone}
+%\input{motion}
+%\input{defs}
+%\input{exploration}
+%\input{derivation}
+%\input{imaging}
+%\input{estimation}
+
+%\input{impact}
+%\input{nsfsupport}
+%
+\clearpage
+%\setcounter{page}{1}
+%\input{collaboration}
+%
+%\clearpage
+%\setcounter{page}{1}
+%
+%\input{data}
+%
+%\clearpage
+%\setcounter{page}{1}
+%
+\bibliographystyle{abbrv}
+\bibliography{biblio_anat}
+%
+\end{document}
