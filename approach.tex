@@ -63,7 +63,7 @@ We note that 2P excitation is usually combined with temporal focusing to further
 %
 %We  note that usually this 2P excitation is combined with temporal focusing to further enhance depth sectioning. This idea is orthogonal to the proposed correction and for simplicity we will not discuss it here. 
 
-For a 1P correction, we can utilize the same setup. Given the proximity of the excitation and emission wavelengths, we can employ the same SLM pattern to reshape both. In practice, system alignment becomes significantly simpler if we not only use the same pattern but also pass both incoming and outgoing wavefronts through the same physical SLM. Consequently, we can reposition the dichroic mirror to be placed after the SLM.
+For a 1P correction, we can utilize the same setup. Given the proximity of the excitation and emission wavelengths, we can employ the same SLM pattern to reshape both. In practice, system alignment becomes significantly simpler if we not only use the same pattern but also pass both incoming and outgoing wavefronts through the same physical SLM. Consequently, we can reposition the dichroic mirror to be placed after SLM2.
 
 
 %\boldstart{1P system:} Is similar to the 2P  system with one impotent difference. Even for modest tissue depths the excitation light is also aberrated, and we need to use the SLM to reshape the incoming light as well. Since the excitation and emission wavelengths are very close, we use the {\em same SLM pattern } to reshape both. The system alignment is significantly simpler if we not only use the same pattern, but actually pass both incoming and outgoing wavefronts via the same physical SLM. 
@@ -82,7 +82,7 @@ For 2P imaging, where the number of target neurons is limited, we can replace th
 
 \subsubsection{Correction algorithms}
 \boldstart{2P emission correction:} At modest tissue depths, a 2P excitation beam propagates with minimal aberration. Since the emission is proportional to the square of the excitation power, the emitted light primarily returns from a single point guide-star. To correct aberration, we need to measure the complex wavefront emerging from the guide-star and apply its conjugate on the SLM.
-There are various wavefront measurement strategies available, with the simplest being the use of a Shack-Hartmann wavefront sensor~\cite{Platt2001HistoryAP,Aviles-Espinosa:11,Cha2010SHwavefrontsensor}. However, based on our experience, a dedicated sensor is not necessary. The wavefront can be estimated using a simple phase retrieval optimization problem~\cite{candes2015}, phase diversity~\cite{Dean2003,Robert1982}, or a random perturbation scheme~\cite{WISH2019}.
+There are various wavefront measurement strategies available, with the simplest being the use of a Shack-Hartmann wavefront sensor~\cite{Platt2001HistoryAP,Aviles-Espinosa:11,Cha2010SHwavefrontsensor}. Alternatively, the wavefront can be estimated using a  phase retrieval optimization problem~\cite{candes2015}, e.g. using phase diversity~\cite{Dean2003,Robert1982}, or a random perturbation scheme~\cite{WISH2019}.
 To achieve this, we display a small number of $3-5$ known modulation patterns on the SLM, measure the intensity of the resulting aberrated speckle pattern, and solve an optimization problem to determine the complex phase of the wavefront.
 
 \boldstart{2P excitation correction:}
@@ -129,14 +129,14 @@ Our goal is to determine the number of neurons we can simultaneously correct wit
 To best utilize the SLM pixels, the system magnification is chosen such that a sensor pixel and an SLM pixel correspond to a diffraction limit unit  $\Delta=\lambda/(2NA)$ inside the tissue.
  
  In this setting, the value measured at each camera pixel is influenced by a disc of SLM pixels, corresponding to a defocus blur of diameter:
- \BE
+ \BE\label{eq:defocus-diameter}
  d(\zeta)=2 NA\cdot \zeta/\Delta.
  \EE  
  Clearly, for small  $\zeta$ values, the defocus blur is smaller, allowing us to  correct more neurons on the same SLM. On the other hand, the disc diameter should be at least as large as the number of aberration modes we wish to correct, ensuring we have enough degrees of freedom on our SLM. Moreover, if we use larger discs we can   tolerate a larger depth of field (DOF), meaning the target neurons do not have to be exactly at plane  $z_o$.
  Using a derivation that we omit due to space constraints, we conclude that if we aim to correct at least $50\%$ of the energy in the aberrated wavefront, by placing the SLM at distance $\zeta$, the depth range we can address corresponds to:
  \BE \label{eq:dof-slm-d} [z_o-0.3\zeta,z_o+0.4\zeta].\EE
  
- In the following table, we use this equation to present a numerical evaluation of the number of neurons we can correct as a function of depth of field. For the simulation, we assume 
+ In the following table, we use \equpref{eq:defocus-diameter}{eq:dof-slm-d}  to test different depth-of-field targets and present a numerical evaluation of the number of different corrections we can fit on the SLM, namely the number of neurons we can correct. For the simulation, we assume 
   $NA=0.7$, $\lambda=510 nm$. % and that the aberration has a maximal support of $k \times k$ pixels with  $k=20$. 
 We consider the recent Taxes Instrument SLM~\cite{PLM-TI_2019} with $800\times 1358$ pixels. 
 \begin{center}
@@ -147,8 +147,7 @@ We consider the recent Taxes Instrument SLM~\cite{PLM-TI_2019} with $800\times 1
 	Number of fitted corrections&1764 &        441 &        110  &        49 &         27 &         17  &        12 \\\hline
 \end{tabular}
 \end{center}
-Most of the aberrations we target in this research are only a few dozen pixels wide, as shown in \figref{fig:confocal-res}(f) above. The table indicates that for a small DOF, where we can use compact support corrections, we can easily fit thousands of corrections on the SLM.
-
+Most of the aberrations we target in this research are only a few dozen pixels wide, as shown in \figref{fig:confocal-res}(f) above. The table indicates that for a small DOF, where we can use compact support corrections, we can easily fit thousands of corrections on the SLM. Thought it is possible we will have to limit the number of target neurons to avoid too much background fluorescence. 
 When using 2P excitation, we are likely limited to measuring 10-20 neurons due to power constraints~\cite{Davis2024Optical}. Given this limitation, there are enough pixels on the SLM to cover a DOF of nearly $50\mu m$.
 
 
